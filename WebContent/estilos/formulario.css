@@ -1,0 +1,51 @@
+p {
+	line-height: 1.9em;
+	margin-bottom: 20px;
+	font-size: 12px;
+}
+
+fieldset {
+	display: block;
+	border: none;
+	border-top: 1px solid #ccc;
+}
+
+fieldset legend {
+	font-weight: bold;
+	font-size: 13px;
+	padding-right: 10px;
+	color: #333;
+}
+
+fieldset form {
+	padding-top: 15px;
+}
+
+fieldset p label {
+	float: left;
+	width: 150px;
+}
+
+form input, form select, form textarea {
+	padding: 5px;
+	color: #333333;
+	border: 1px solid #ddd;
+	border-right:1px solid #ccc;
+	border-bottom:1px solid #ccc;
+	background-color:#fff;
+	font-size: 13px;
+}
+
+h3 {
+	color: #555;
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 10px;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.box { 
+	margin: 0;
+	padding: 10px;
+	background-color: #FFFFFF;
+}

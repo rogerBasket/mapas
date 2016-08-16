@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="strust.devMode" value="true"/>
+
+	<package name="mapbici-struts" namespace="/" extends="struts-default">
+		<interceptors>
+			<interceptor name="validacion" class="interceptor.ValidacionInterceptor"/>
+			<interceptor-stack name="interceptorValidacion">
+				<interceptor-ref name="validacion">
+					<param name="publicos">LoginAction,RegistroAction,HomeAction,IndexJSP,LoginJSP,RegistroJSP,PublicoAction,VerMapaAction</param>
+				</interceptor-ref>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+	
+		<default-interceptor-ref name="interceptorValidacion"/>
+		
+		<global-results>
+			<result name="admin" type="redirect">ListarUsuariosAction</result>
+			<result name="usuario">usuario.jsp</result>
+			<result name="login">login.jsp</result>
+			<result name="error">error.jsp</result>
+		</global-results>
+		
+		<action name="IndexJSP">
+			<result>index.jsp</result>
+		</action>
+		
+		<action name="LoginJSP">
+			<result>login.jsp</result>
+		</action>
+		
+		<action name="RegistroJSP">
+			<result>registro.jsp</result>
+		</action>
+		
+		<action name="NuevoMapaJSP">
+			<result>nuevo_mapa.jsp</result>
+		</action>
+		
+		<action name="HomeAction" class="action.HomeAction">
+			<result name="index" type="redirect">IndexJSP</result>
+		</action>
+		
+		<action name="SalirAction" class="action.SalirAction">
+			<result type="redirect">LoginJSP</result>
+		</action>
+		
+		<action name="PublicoAction" class="action.PublicoAction">
+			<result>publico.jsp</result>
+			<result name="input" type="redirect">HomeAction</result>
+		</action>
+	
+		<action name="LoginAction" class="action.LoginAction">
+			<result name="input">login.jsp</result>
+		</action>
+		
+		<action name="RegistroAction" class="action.RegistroAction">
+			<result name="input">registro.jsp</result>
+		</action>
+		
+		<action name="ListarUsuariosAction" class="action.ListarUsuariosAction">
+			<result>admin.jsp</result>
+		</action>
+		
+		<action name="ContribucionesAction" class="action.ContribucionesAction">
+			<result>contribuciones_mapas.jsp</result>
+			<result name="input" type="redirect">usuario.jsp</result>
+		</action>
+		
+		<action name="BorrarUsuarioAction" class="action.BorrarUsuarioAction">
+			<result type="redirect">ListarUsuariosAction</result>
+		</action>
+		
+		<action name="GuardarMapaAction" class="action.GuardarMapaAction">
+			<result type="redirect">ListarMapasAction</result>
+			<result name="input" type="redirect">NuevoMapaJSP</result>
+		</action>
+		
+		<action name="ListarMapasAction" class="action.ListarMapasAction">
+			<result>listar_mapas.jsp</result>
+		</action>
+		
+		<action name="VerMapaAction" class="action.VerMapaAction">
+			<result>mostrar_mapa.jsp</result>
+			<result name="input" type="redirect">ListarMapasAction</result>
+		</action>
+		
+		<action name="BorrarMapaAction" class="action.BorrarMapaAction">
+			<result type="redirect">ListarMapasAction</result>
+		</action>
+		
+		<action name="VerUsuarioAction" class="action.VerUsuarioAction">
+			<result>info_usuario.jsp</result>
+			<result name="input" type="redirect">ListarUsuariosAction</result>
+		</action>
+		
+		<action name="MapasUsuarioAction" class="action.MapasUsuarioAction">
+			<result>publico.jsp</result>
+			<result name="input" type="redirect">ListarUsuariosAction</result>
+		</action>
+		
+		<action name="PerfilJSP">
+			<result>perfil.jsp</result>
+		</action>
+		
+		<action name="PerfilAction" class="action.PerfilAction">
+			<result name="salir" type="redirect">SalirAction</result>
+			<result name="input" type="redirect">PerfilJSP</result>
+		</action>
+	</package>
+</struts>
